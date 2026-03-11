@@ -39,19 +39,19 @@ pipeline {
             }
         }
         stage('Deploy to Dev Environment') {
-            steps {
-                script {
-                    withCredentials([file(credentialsId: 'roseaw-225', variable: 'KUBECONFIG')]) {
-                        sh "sed -i 's|${DOCKER_IMAGE}:latest|${DOCKER_IMAGE}:${IMAGE_TAG}|' deployment-dev.yaml"
-                        sh "kubectl apply -f deployment-dev.yaml"
-                    }
-                }
+    steps {
+        script {
+            withCredentials([file(credentialsId: 'sapkotp2-225-sp26', variable: 'KUBECONFIG')]) {
+                sh "sed -i 's|${DOCKER_IMAGE}:latest|${DOCKER_IMAGE}:${IMAGE_TAG}|' deployment-dev.yaml"
+                sh "kubectl apply -f deployment-dev.yaml"
             }
         }
+    }
+}
         stage('Check Kubernetes Cluster') {
             steps {
                 script {
-                    withCredentials([file(credentialsId: 'roseaw-225', variable: 'KUBECONFIG')]) {
+                    withCredentials([file(credentialsId: 'sapkotp2-225-sp26', variable: 'KUBECONFIG')]) {
                         sh "kubectl get all"
                     }
                 }
