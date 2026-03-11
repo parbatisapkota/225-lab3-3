@@ -2,7 +2,7 @@ pipeline {
     agent any 
 
     environment {
-        DOCKER_CREDENTIALS_ID = 'roseaw-dockerhub'  
+        DOCKER_CREDENTIALS_ID = 'sapkotp2-dockerhub'  
         DOCKER_IMAGE = 'cithit/sapkotp2'                               //<-----change this to your MiamiID!
         IMAGE_TAG = "build-${BUILD_NUMBER}"
         GITHUB_URL = 'https://github.com/parbatisapkota/225-lab3-3.git' //<-----change this to match this new repository!
